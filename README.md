@@ -140,4 +140,4 @@ sudo apt-get install nginx -y
 - Change to the app directory
 - Inside the app directory, install pm2 `sudo npm install pm2 -y`
 - Install some relevant npm package files (app will throw an error if this is not done) `npm install`
-- Run npm `npm start`
+- Run npm (again this is in the app directory) `npm start`
