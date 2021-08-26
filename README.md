@@ -111,3 +111,23 @@ SDLC Representation
 
     Multi cloud-computing involves using the services of 2 or more cloud service providers. Communication can occur between the 2 providers for data migration and other services. 
     Doing this ensures that data can be kept safe and accessed at all times. If one of the providers fail for some reason, the other provider will be able to "pick up the slack".
+
+---
+### Provisiong in Vagrant
+
+Within the VagrantFile, add the following line:
+```
+config.vm.provision "shell", path: "provision.sh"
+```
+
+Create a file named "provision.sh" within the same directory as the "VagrantFile". The script should be:
+```
+!#/bin/bash
+
+sudo apt-get update -y
+
+sudo apt-get upgrade -y
+
+sudo apt-get install nginx -y
+```
+**THIS MUST BEGIN WITH THE BANG LINE**
