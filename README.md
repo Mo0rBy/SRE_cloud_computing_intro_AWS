@@ -86,12 +86,12 @@ SDLC Representation
 
 On-premise:
     
-    On-premise (inhouse) technologies require large capital investment and operating costs. This includes, construction of the data centre, purchasing and setting up the hardware, security and staff training. All these costs add up to a potentially very large amount.
+On-premise (inhouse) technologies require large capital investment and operating costs. This includes, construction of the data centre, purchasing and setting up the hardware, security and staff training. All these costs add up to a potentially very large amount.
 
 Cloud-computing:
 
-    Cloud-computing involves renting virtual server space to decrease the cost of hosting online services. 
-    For example, with AWS, Amazon builds it's data centres and populates them with hardware and trains its own staff. The customer then pays a fee (subscription or pay-as-you-go) to access these services. This can dramatically decrease cost.
+Cloud-computing involves renting virtual server space to decrease the cost of hosting online services. 
+For example, with AWS, Amazon builds it's data centres and populates them with hardware and trains its own staff. The customer then pays a fee (subscription or pay-as-you-go) to access these services. This can dramatically decrease cost.
 
 ---
 ![alt text](https://www.peoplehr.com/blog/wp-content/uploads/2015/06/12.png)
@@ -100,7 +100,7 @@ Cloud-computing:
 
 Hybrid Cloud-computing:
 
-    Hybrid cloud-computing involves using a public cloud service provider, as well as controlling a private cloud using on-premise infrastructure. This is done to reduce costs and/or strain on local resources. In some sectors, it is done to comply with legal regulations. The financial and health care spaces are in possesion of large amounts of private data, and can therefore benegfit from using a hybrid cloud model.
+Hybrid cloud-computing involves using a public cloud service provider, as well as controlling a private cloud using on-premise infrastructure. This is done to reduce costs and/or strain on local resources. In some sectors, it is done to comply with legal regulations. The financial and health care spaces are in possesion of large amounts of private data, and can therefore benegfit from using a hybrid cloud model.
 
 ---
 ![alt text](https://qph.fs.quoracdn.net/main-qimg-8e9ed422b2ae93823c754ea345da004e)
@@ -109,5 +109,5 @@ Hybrid Cloud-computing:
 
 Multi Cloud-computing:
 
-    Multi cloud-computing involves using the services of 2 or more cloud service providers. Communication can occur between the 2 providers for data migration and other services. 
-    Doing this ensures that data can be kept safe and accessed at all times. If one of the providers fail for some reason, the other provider will be able to "pick up the slack".
+Multi cloud-computing involves using the services of 2 or more cloud service providers. Communication can occur between the 2 providers for data migration and other services. 
+Doing this ensures that data can be kept safe and accessed at all times. If one of the providers fail for some reason, the other provider will be able to "pick up the slack".
