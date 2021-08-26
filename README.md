@@ -25,10 +25,10 @@
 
     - The 4 key advantages of cloud-computing are:
 
-        1 Ease of use
-        2 Flexibility
-        3 Robustness
-        4 Cost Savings
+        - Ease of use
+        - Flexibility
+        - Robustness
+        - Cost Savings
 
         Other advantages include:
 
