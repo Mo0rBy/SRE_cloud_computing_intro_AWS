@@ -131,3 +131,13 @@ sudo apt-get upgrade -y
 sudo apt-get install nginx -y
 ```
 **THIS MUST BEGIN WITH THE BANG LINE**
+
+---
+- install npm `sudo apt-get install npm -y`
+- install python-software-properties `sudo apt-get install python-software-properties -y`
+- new source for nodejs `curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -`
+- install nodejs `sudo apt-get install nodejs -y`
+- Change to the app directory
+- Inside the app directory, install pm2 `sudo npm install pm2 -y`
+- Install some relevant npm package files (app will throw an error if this is not done) `npm install`
+- Run npm `npm start`
