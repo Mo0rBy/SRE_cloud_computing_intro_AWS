@@ -138,6 +138,49 @@ sudo apt-get install nginx -y
 - new source for nodejs `curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -`
 - install nodejs `sudo apt-get install nodejs -y`
 - Change to the app directory
-- Inside the app directory, install pm2 `sudo npm install pm2 -y`
+- Inside the app directory, install pm2 `sudo npm install pm2 -g -y`
 - Install some relevant npm package files (app will throw an error if this is not done) `npm install`
 - Run npm (again this is in the app directory) `npm start`
+
+---
+#### Friday Notes
+
+Connect the NGINX VM to the Mongodb VM using an "Environment Variable" called `DB_HOST`
+
+- Create a multi-machine setup
+- One machine with node app provisionsin the second VM with mongodb.
+
+- Configure reverse proxy with nginx so the app can load on the ip without the 3000
+
+---
+Setup DB_HOST env variable
+```
+export DB_HOST=192.168.10.150:27017/posts
+echo export DB_HOST=192.168.10.150:27017/posts >> ~/.bashrc
+source ~/.bashrc
+```
+2nd line adds the command to .bashrc
+
+---
+### Setup reverse proxy on nginx
+
+Access the nginx configuration file
+```
+sudo nano /etc/nginx/sites-available/default
+```
+
+Then change the default location that nginx takes the user to
+```
+location / {
+        proxy_pass http://localhost:3000
+```
+Then check that the file has no syntax errors using `sudo nginx -t`
+Restart nginx with `sudo systemctl restart nginx`
+This needs to be done in order to run the changes made in the configuration file
+The app can then be started with `npm start`
+In your browser, navigate to `192.168.10.100`. Instead of seeing the nginx front page, you should see the app's front .
+
+Could use AWK or SED to automate writing in the config file in provision.sh for the VM (add later)
+
+---
+
