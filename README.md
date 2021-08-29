@@ -143,26 +143,21 @@ sudo apt-get install nginx -y
 - Run npm (again this is in the app directory) `npm start`
 
 ---
-#### Friday Notes
-
+### Friday's Task
 Connect the NGINX VM to the Mongodb VM using an "Environment Variable" called `DB_HOST`
 
 - Create a multi-machine setup
 - One machine with node app provisionsin the second VM with mongodb.
-
 - Configure reverse proxy with nginx so the app can load on the ip without the 3000
+- Edit Mongdb config file such that it can be accessed on any ip
+- Load the correct page on browser
 
 ---
-Setup DB_HOST env variable
-```
-export DB_HOST=192.168.10.150:27017/posts
-echo export DB_HOST=192.168.10.150:27017/posts >> ~/.bashrc
-source ~/.bashrc
-```
-2nd line adds the command to .bashrc
-
+Configuring "app" machine
 ---
-### Setup reverse proxy on nginx
+---
+Setup reverse proxy on nginx
+---
 
 Access the nginx configuration file
 ```
@@ -172,7 +167,7 @@ sudo nano /etc/nginx/sites-available/default
 Then change the default location that nginx takes the user to
 ```
 location / {
-        proxy_pass http://localhost:3000
+        proxy_pass http://localhost:3000;
 ```
 Then check that the file has no syntax errors using `sudo nginx -t`
 Restart nginx with `sudo systemctl restart nginx`
@@ -180,7 +175,51 @@ This needs to be done in order to run the changes made in the configuration file
 The app can then be started with `npm start`
 In your browser, navigate to `192.168.10.100`. Instead of seeing the nginx front page, you should see the app's front .
 
-Could use AWK or SED to automate writing in the config file in provision.sh for the VM (add later)
+**The config file can be overwritten like this:**
+(this is within the "app" machine's provision.sh)
+```
+sudo rm /etc/nginx/sites-available/default
+sudo ln -s /home/ubuntu/provision/default.txt /etc/nginx/sites-available/default
+
+sudo systemctl restart nginx
+```
+This removes the default config file and links the new synced file to the same path.
+
+The whole config file can be found in app_provision/default/default.txt within this repo.
 
 ---
+Add DB_HOST to /etc/environment file
+---
+`sudo echo DB_HOST=db-ip >> /etc/environment` doesn't work because the redirect is completed first, which is not sudo'd, only the `echo` command is sudo'd
 
+Can either wrap the command and complete it in a root-user shell >> `sudo bash 'echo DB_HOST=db-ip > /etc/environment` 
+
+Or use the `tee` command, which reads from standard input and writes to standard output >> `echo "DB_HOST=db-ip" | sudo tee -a /etc/environment`
+
+This ensures that the redirect into /etc/environement is successful (using the root user) and then the relevant text is echoed into the file. Note that `-a` is used for the `tee` command in order to append only.
+
+---
+Configuring "db" machine
+---
+---
+Edit Mongodb config file
+---
+The bind ip needs to changed to `0.0.0.0`. This allows the Mongodb database to be accessed through any ip address.
+
+Similar to the nginx config file, this is done by syncing the file from the localhost machine and then linking the path.
+
+---
+**PLEASE LOOK AT THE PROVISION FILES TO UNDERSTAND HOW THE MACHINES ARE SETUP**
+
+---
+After initialising both machines:
+
+- Log into the "app" machine >> `vagrant ssh app`
+
+- Navigate to the synced app folder >> `cd /home/ubuntu/app`
+
+- Start the app >> `npm start`
+
+- Navigate to `192.168.10.100`, the app homepage should be seen
+
+- Naviagate to `192.168.10.100/posts`, the posts page should be seen

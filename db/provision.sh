@@ -14,5 +14,9 @@ sudo apt-get update
 #Install and verify MongoDB
 sudo apt-get install -y mongodb-org
 
+#Change the Mongodb config file
+sudo rm /etc/mongod.conf
+sudo ln -s /home/ubuntu/provision/mongod.conf /etc/mongod.conf
+
 #Start MongoDB
 sudo systemctl start mongod
