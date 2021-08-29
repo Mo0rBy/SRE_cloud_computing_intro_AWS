@@ -220,6 +220,8 @@ After initialising both machines:
 
 - Start the app >> `npm start`
 
+- Inject the correct database >> `node seeds/seed.js`
+
 - Navigate to `192.168.10.100`, the app homepage should be seen
 
 - Naviagate to `192.168.10.100/posts`, the posts page should be seen
