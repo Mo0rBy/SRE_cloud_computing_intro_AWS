@@ -25,17 +25,8 @@ npm install
 sudo rm /etc/nginx/sites-available/default
 sudo ln -s /home/ubuntu/provision/default.txt /etc/nginx/sites-available/default
 
-#Restart nginx to implement config changes
-sudo systemctl restart nginx
-
 #Write DB_HOST variable to /etc/environment file (Ensures persistent environment variable)
 echo "DB_HOST=mongodb://192.168.10.150:27017/posts" | sudo tee -a /etc/environment
 
-#Viktor says this doesn't work, has to be done manually
-#Add DB_HOST env variable
-# export DB_HOST=192.168.10.150:27017/posts
-# echo "DB_HOST=192.168.10.150:27017/posts" >> ~/.bashrc
-# source ~/.bashrc
-
-#Start the app
-# npm start
+#Restart nginx to implement config changes
+sudo systemctl restart nginx
