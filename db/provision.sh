@@ -20,3 +20,5 @@ sudo ln -s /home/ubuntu/provision/mongod.conf /etc/mongod.conf
 
 #Start MongoDB
 sudo systemctl start mongod
+
+sudo systemctl enable mongod
